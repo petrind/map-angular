@@ -1,3 +1,4 @@
+//dialog new origin
 div.animate-show-hide#originform(ng-show="data.mode == 'new-origin'")
   md-toolbar
     .md-toolbar-tools
@@ -14,7 +15,7 @@ div.animate-show-hide#originform(ng-show="data.mode == 'new-origin'")
         p {{newOrigin.longitude}}
   form(name="originForm" ng-submit="vm.saveOrigin(newOrigin)" novalidate)
     md-dialog-actions
-      md-button(aria-label="Save Origin" type="submit") Save
+      md-button.md-raised.md-primary(aria-label="Save Origin" type="submit") Save
     md-dialog-content.md-padding
       md-input-container.md-block
         label Label

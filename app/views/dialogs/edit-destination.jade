@@ -1,3 +1,4 @@
+//dialog edit-destination
 div.animate-show-hide#editdestinationform(ng-show="data.mode == 'edit-destination'")
   md-toolbar
     .md-toolbar-tools
@@ -14,7 +15,7 @@ div.animate-show-hide#editdestinationform(ng-show="data.mode == 'edit-destinatio
         p {{$root.selectedDestination.longitude}}
   form(name="destinationForm" ng-submit="vm.updateDestination($root.selectedDestination)" novalidate)
     md-dialog-actions
-      md-button(aria-label="Save Destination" type="submit" ) Update Destination
+      md-button.md-raised.md-primary(aria-label="Save Destination" type="submit" ) Update Destination
     md-dialog-content.md-padding
       div(layout="row")
         md-input-container(flex)
