@@ -1,0 +1,16 @@
+//Sidenav
+md-sidenav.md-whiteframe-z2(md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')")
+  md-toolbar
+    h1 Origin
+  md-content
+    md-list
+      //Loop through the origins list
+      md-list-item(ng-repeat="origin in origins")
+        md-button(ng-click="selectOrigin(origin)")
+          md-icon.origin_avatar(md-svg-icon="origin")
+          span(ng-class="{selected: origin === selectedOrigin}") {{origin.label}}
+  div.new_origin
+    //Show dialog to create new origin on click.
+    md-button(aria-label="new_origin" class="md-fab md-raised md-primary md-mini" ng-click="newOriginDialog($event)")
+      ng-md-icon(icon="add")
+        md-tooltip(direction="top") Add Origin

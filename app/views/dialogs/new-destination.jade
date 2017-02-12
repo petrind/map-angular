@@ -1,0 +1,26 @@
+div.animate-show-hide#destinationform(ng-show="data.mode == 'new-destination'")
+  md-toolbar
+    .md-toolbar-tools
+      h2 Add New Destination
+  div(layout="row")
+    md-list-item
+      div.md-list-item-text
+        h3 Latitude
+        p {{newDestination.latitude}}
+    md-divider
+    md-list-item
+      div.md-list-item-text
+        h3 Longitude
+        p {{newDestination.longitude}}
+  form(name="destinationForm" ng-submit="vm.saveDestination(newDestination)" novalidate)
+    md-dialog-actions
+      md-button(aria-label="Save Destination" type="submit") Add Destination
+    md-dialog-content.md-padding
+      div(layout="row")
+        md-input-container(flex)
+          label Name
+          input(ng-model="newDestination.label" type="text" name="newDestination.label")
+      md-input-container.md-block
+        label Description
+        textarea(ng-model="newDestination.description" rows="2" name="newDestination.description")
+    

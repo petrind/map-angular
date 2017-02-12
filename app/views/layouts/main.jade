@@ -1,0 +1,8 @@
+//Main toolbar
+div(layout="column" flex)
+  md-toolbar(layout="row")
+    div.md-toolbar-tools
+      md-button.md-button-icon(hide-gt-sm aria-label="Menu" ng-click="toggleSidenav()")
+        ng-md-icon.origins(icon="view_module")
+      h1 Map
+  include ../content/map

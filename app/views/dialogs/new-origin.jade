@@ -1,0 +1,24 @@
+div.animate-show-hide#originform(ng-show="data.mode == 'new-origin'")
+  md-toolbar
+    .md-toolbar-tools
+      h2 Create New Origin
+  div(layout="row")
+    md-list-item
+      div.md-list-item-text
+        h3 Latitude
+        p {{newOrigin.latitude}}
+    md-divider
+    md-list-item
+      div.md-list-item-text
+        h3 Longitude
+        p {{newOrigin.longitude}}
+  form(name="originForm" ng-submit="vm.saveOrigin(newOrigin)" novalidate)
+    md-dialog-actions
+      md-button(aria-label="Save Origin" type="submit") Save
+    md-dialog-content.md-padding
+      md-input-container.md-block
+        label Label
+        input(ng-model="newOrigin.label" type="text" name="newOrigin.label" )
+      md-input-container.md-block
+        label Description
+        textarea(ng-model="newOrigin.description" rows="2" name="newOrigin.description" )

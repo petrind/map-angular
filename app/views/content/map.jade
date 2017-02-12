@@ -1,0 +1,44 @@
+//Main content
+md-content.md-default-theme
+  div.md-padding
+    h2(ng-show="selectedOrigin.Destinations.length") Destinations by {{selectedOrigin.label}}
+    div(ng-controller="MapController")      
+      map(center="{{selectedOrigin.latitude}},{{selectedOrigin.longitude}}",zoom="15" on-click="vm.addMarker()")
+        marker(icon="{{originIcon}}" position="{{selectedOrigin.latitude}},{{selectedOrigin.longitude}}")
+        marker(position="{{$root.data.tempPoint.latitude}},{{$root.data.tempPoint.longitude}}")
+        marker(ng-repeat="Destination in selectedOrigin.Destinations" position="[{{Destination.latitude}},{{Destination.longitude}}]" icon="{{destinationIcon}}")
+        directions(draggable="true",  travel-mode="{{$root.mode}}", waypoints="{{$root.wayPoints}}", origin="{{$root.selectedOrigin.latitude}},{{$root.selectedOrigin.longitude}}", destination="{{$root.last.location}}", optimize="true")        
+      //origin form
+      include ../dialogs/new-origin
+      //destination form
+      include ../dialogs/new-destination
+      //Edit destination form
+      include ../dialogs/edit-destination
+    div.origin_actions
+      md-button.origin_info(aria-label="view_info" class="md-fab md-raised md-primary md-mini" ng-click="showOriginInfo($event)")
+        ng-md-icon(icon="person")
+          md-tooltip(direction="bottom") View {{selectedOrigin.label}}'s Info
+          
+      md-button.new_Destination(aria-label="new_Destination" class="md-fab md-raised md-primary md-mini" ng-click="newDestinationDialog($event)")
+        ng-md-icon(icon="my_library_add")
+          md-tooltip(direction="bottom") Add new Destination From {{selectedOrigin.label}}
+  md-content.md-padding(layout="column")
+    md-card(ng-repeat="Destination in selectedOrigin.Destinations")
+      div(layout="row" layout-align="end")
+        //Edit and Delete Destinations
+        div.Destinations_menu
+          md-button(aria-label="edit" class="md-fab md-raised md-mini" ng-click="editDestination($event, Destination)")
+            ng-md-icon(icon="edit")
+            md-tooltip(direction="bottom") edit Destination
+          md-button(aria-label="delete" class="md-fab md-raised md-mini" ng-click="deleteDestination($event, Destination)")
+            ng-md-icon(icon="delete")
+            md-tooltip(direction="bottom") delete Destination
+      md-card-title
+        md-card-title-text
+          span.md-headline {{destination.label}} 
+          span.md-subhead Latitude: {{Destination.latitude}} Longitude: {{Destination.longitude}} 
+          span.md-subhead Description: {{ Destination.description | date: mediumDate}} 
+      md-card-content
+        div.md-subhead {{Destination.description}}
+        md-chips
+          Distance from origin: {{ Destination.distance}}

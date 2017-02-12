@@ -1,0 +1,27 @@
+div.animate-show-hide#editdestinationform(ng-show="data.mode == 'edit-destination'")
+  md-toolbar
+    .md-toolbar-tools
+      h2 Edit {{$root.selectedDestination.label}}
+  div(layout="row")
+    md-list-item
+      div.md-list-item-text
+        h3 Latitude
+        p {{$root.selectedDestination.latitude}}
+    md-divider
+    md-list-item
+      div.md-list-item-text
+        h3 Longitude
+        p {{$root.selectedDestination.longitude}}
+  form(name="destinationForm" ng-submit="vm.updateDestination($root.selectedDestination)" novalidate)
+    md-dialog-actions
+      md-button(aria-label="Save Destination" type="submit" ) Update Destination
+    md-dialog-content.md-padding
+      div(layout="row")
+        md-input-container(flex)
+          label Label
+          input(ng-model="$root.selectedDestination.label" type="text" name="$root.selectedDestination.label")
+      md-input-container.md-block
+        label Description
+        textarea(ng-model="$root.selectedDestination.description" rows="2" name="$root.selectedDestination.description")
+    
+    

@@ -1,0 +1,26 @@
+md-dialog(aria-label="Origin Info" flex="50")
+  md-toolbar
+    .md-toolbar-tools
+      h2 {{$root.selectedOrigin.label}}'s info
+  md-dialog-content.md-padding
+    md-list
+      md-list-item
+        div.md-list-item-text
+          h3 Description
+          p {{$root.selectedOrigin.description}}
+      md-divider
+    div(layout="row")
+      md-list-item
+        div.md-list-item-text
+          h3 Latitude
+          p {{$root.selectedOrigin.latitude}}
+      md-divider
+      md-list-item
+        div.md-list-item-text
+          h3 Longitude
+          p {{$root.selectedOrigin.longitude}}
+      md-divider
+      md-list-item
+        div.md-list-item-text
+          h3 Destinations on Map
+          p {{$root.selectedOrigin.Destinations.length}}

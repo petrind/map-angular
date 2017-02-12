@@ -1,0 +1,23 @@
+{
+  "name": "map",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Petrus F. Subekti"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-material": "^1.0.9",
+    "angular-material-icons": "^0.7.1",
+    "ngmap": "^1.17.8"
+  }
+}
