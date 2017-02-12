@@ -7,17 +7,17 @@
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "etobee_angular_test",
-    "host": "127.0.0.1",
+    "username": "b14ca63387d0ca",
+    "password": "34805e69",
+    "database": "heroku_609bbdc0843287e",
+    "host": "us-cdbr-iron-east-04.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "etobee_angular_production",
-    "host": "127.0.0.1",
+    "username": "b14ca63387d0ca",
+    "password": "34805e69",
+    "database": "heroku_609bbdc0843287e",
+    "host": "us-cdbr-iron-east-04.cleardb.net",
     "dialect": "mysql"
   }
 }

@@ -89,7 +89,7 @@ angular.module('Map.controllers')
     //save new origin point
     $scope.vm.saveOrigin = function (origin) {
       if(!$scope.common.pointValidation(origin)){
-        Toast.error('Please click on map to specify location', 'top right', 3000);
+        Toast.show('Please click on map to specify location', 'top right', 3000);
       } else{
         if(origin.label===null || origin.label===undefined){
           origin.label = "Origin Point "+ $rootScope.origins.length;
@@ -104,7 +104,7 @@ angular.module('Map.controllers')
             $mdDialog.cancel();
           })
           .catch(function () {
-            Toast.error('Error creating origin', 'top right', 3000);
+            Toast.show('Error creating origin', 'top right', 3000);
           });
       }  
     };
@@ -125,7 +125,7 @@ angular.module('Map.controllers')
     //create a new destination
     $scope.vm.saveDestination = function (destination) {
       if(!$scope.common.pointValidation(destination)){
-        Toast.error('Please click on map to specify location', 'top right', 3000);
+        Toast.show('Please click on map to specify location', 'top right', 3000);
       } else {
         if(destination.label===null || destination.label===undefined){
           destination.label = "Destination Point "+ $rootScope.selectedOrigin.Destinations.length;
@@ -140,7 +140,7 @@ angular.module('Map.controllers')
           $mdDialog.cancel();
         })
         .catch(function () {
-          Toast.error('Error creating destination', 'top right', 3000);
+          Toast.show('Error creating destination', 'top right', 3000);
         });
       }      
     };
@@ -148,7 +148,7 @@ angular.module('Map.controllers')
     //Update a destination's details
     $scope.vm.updateDestination = function (destination) {
       if(!$scope.common.pointValidation(destination)){
-        Toast.error('Please click on map to specify location', 'top right', 3000);
+        Toast.show('Please click on map to specify location', 'top right', 3000);
       } else {
         Destinations
         .update(destination)
@@ -158,7 +158,7 @@ angular.module('Map.controllers')
           $mdDialog.cancel();
         })
         .catch(function () {
-          Toast.error('Error updating destination', 'top right', 300);
+          Toast.show('Error updating destination', 'top right', 300);
         });
       }      
     };

@@ -15,13 +15,7 @@ Map
     //Set default theme of ngmaterial
     $mdThemingProvider.theme('default')
       .primaryPalette('blue')
-      .accentPalette('red');
-    $mdThemingProvider.theme('success')
-      .primaryPalette('green')
-      .accentPalette('blue');
-    $mdThemingProvider.theme('error')
-      .primaryPalette('red')
-      .accentPalette('blue');
+      .accentPalette('red');    
   }])
   .config(['$mdIconProvider', function ($mdIconProvider) {
     //Placeholder icon for origin info.
