@@ -1,13 +1,18 @@
 angular.module('Map.controllers')
-.controller('MainCtrl', ['$rootScope', '$scope', '$mdSidenav', '$mdDialog', 'Origins', 'Destinations', 'Toast',
-function ($rootScope, $scope, $mdSidenav, $mdDialog, Origins, Destinations, Toast) {
+.controller('MainCtrl', ['$rootScope', '$scope', '$mdSidenav', '$mdDialog', 'Origins', 'Destinations', 'Toast', 'Config',
+function ($rootScope, $scope, $mdSidenav, $mdDialog, Origins, Destinations, Toast, Config) {
   $rootScope.data = {};
-  //Fetch all origins
+  //Fetch all origins, and set the first as selected
   Origins.all()
     .then(function (origins) {
-      $rootScope.origins = origins;
-      $rootScope.selectedOrigin = origins[0];
-      $rootScope.$emit('updateDirections');
+      
+        $rootScope.origins = origins;
+        if(origins.length>0){
+          $rootScope.selectedOrigin = origins[0];
+          $rootScope.$emit('updateDirections'); //emit event for map to update direction
+        } else {
+            $rootScope.selectedOrigin = Config.defaultLocation();
+        }        
     });
 
   //set an origin as selected
@@ -29,8 +34,7 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Origins, Destinations, Toas
   //Show An origin's info
   $scope.showOriginInfo = function (ev) {
     $mdDialog.show({
-      templateUrl: 'views/dialogs/origin-info.html',
-      controller: 'OriginDialogCtrl',
+      templateUrl: 'views/dialogs/origin-info.html',      
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
@@ -67,7 +71,7 @@ function ($rootScope, $scope, $mdSidenav, $mdDialog, Origins, Destinations, Toas
       });
   };
 
-  //Show modal to edit an existing destination's details
+  //Show dialog to edit an existing destination's details
   $scope.editDestination = function (ev, destination) {
     $rootScope.data.mode = "edit-destination";
     $rootScope.selectedDestination = destination;
