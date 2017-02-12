@@ -2,26 +2,29 @@
 md-content.md-default-theme
   div.md-padding
     h2(ng-show="selectedOrigin.Destinations.length") Destinations by {{selectedOrigin.label}}
-    div(ng-controller="MapController")      
+    div(ng-controller="MapController")
+
       map(center="{{selectedOrigin.latitude}},{{selectedOrigin.longitude}}",zoom="15" on-click="vm.addMarker()")
         marker(icon="{{originIcon}}" position="{{selectedOrigin.latitude}},{{selectedOrigin.longitude}}")
         marker(position="{{$root.data.tempPoint.latitude}},{{$root.data.tempPoint.longitude}}")
         marker(ng-repeat="Destination in selectedOrigin.Destinations" position="[{{Destination.latitude}},{{Destination.longitude}}]" icon="{{destinationIcon}}")
-        directions(draggable="true",  travel-mode="{{$root.mode}}", waypoints="{{$root.wayPoints}}", origin="{{$root.selectedOrigin.latitude}},{{$root.selectedOrigin.longitude}}", destination="{{$root.last.location}}", optimize="true")        
+        directions(ng-if="$root.directions.show",draggable="true",  travel-mode="{{$root.directions.mode}}", waypoints="{{$root.directions.wayPoints}}", origin="{{$root.directions.first.location}}", destination="{{$root.directions.last.location}}")
+      div Directions path length: {{map.directionsRenderers[0].directions.routes[0].overview_path.length}} Km
       //origin form
       include ../dialogs/new-origin
       //destination form
       include ../dialogs/new-destination
       //Edit destination form
       include ../dialogs/edit-destination
+    //top button
     div.origin_actions
       md-button.origin_info(aria-label="view_info" class="md-fab md-raised md-primary md-mini" ng-click="showOriginInfo($event)")
-        ng-md-icon(icon="person")
-          md-tooltip(direction="bottom") View {{selectedOrigin.label}}'s Info
-          
+        ng-md-icon(icon="place")
+          md-tooltip(direction="bottom") View {{selectedOrigin.label}}'s Info          
       md-button.new_Destination(aria-label="new_Destination" class="md-fab md-raised md-primary md-mini" ng-click="newDestinationDialog($event)")
         ng-md-icon(icon="my_library_add")
           md-tooltip(direction="bottom") Add new Destination From {{selectedOrigin.label}}
+  //list of destination
   md-content.md-padding(layout="column")
     md-card(ng-repeat="Destination in selectedOrigin.Destinations")
       div(layout="row" layout-align="end")
