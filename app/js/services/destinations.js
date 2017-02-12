@@ -1,4 +1,9 @@
-angular.module('Map.services')
+/**
+  * @function destinations
+  * @memberOf map.service
+  * @description service provider for Destinations data
+  */
+  angular.module('Map.services')
   .factory('Destinations', ['$http', '$q', function ($http, $q) {
 
     return {

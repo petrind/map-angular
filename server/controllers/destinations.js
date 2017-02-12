@@ -1,7 +1,10 @@
 Destination = require('../models/').Destination;
 
 module.exports= {
-  //Get a list of all destinations using model.findAll()
+
+  /**
+   * Get a list of all destinations using model.findAll()   
+   */
   index(req, res) {
     Destination.findAll()
       .then(function (destinations) {
@@ -12,7 +15,9 @@ module.exports= {
       });
   },
 
-  //Get a destination by it's unique ID using model.findById()
+  /**
+   * Get a destination by it's unique ID using model.findById()
+   */
   show(req, res) {
     Destination.findById(req.params.id)
     .then(function (destination) {
@@ -22,8 +27,9 @@ module.exports= {
       res.status(500).json(error);
     });
   },
-
-  //Create a new destination using model.create()
+  /**
+   * Create a new destination using model.create()
+   */
   create(req, res) {
     Destination.create(req.body)
       .then(function (newDestination) {
@@ -33,8 +39,9 @@ module.exports= {
         res.status(500).json(error);
       });
   },
-
-  //Edit an existing destination using model.update()
+  /**
+   * Edit an existing destination using model.update()
+   */
   update(req, res) {
     Destination.update(req.body, {
       where: {
@@ -48,8 +55,9 @@ module.exports= {
       res.status(500).json(error);
     });
   },
-
-  //Delete an existing destination by it's unique ID using model.destroy()
+  /**
+   * Delete an existing destination by it's unique ID using model.destroy()
+   */
   delete(req, res) {
     Destination.destroy({
       where: {

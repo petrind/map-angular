@@ -2,7 +2,9 @@ Origin = require('../models/').Origin;
 Destination = require('../models/').Destination;
 
 module.exports= {
-  //Get a list of all origins using model.findAll()
+  /**
+   * Get a list of all origins using model.findAll()
+   */
   index(req, res) {
     Origin.findAll({
       //Return all destinations that have a matching origin_id for each origin
@@ -15,8 +17,9 @@ module.exports= {
         res.status(500).json(error);
       });
   },
-
-  //Get an origin by the unique ID using model.findById()
+  /**
+   * Get an origin by the unique ID using model.findById()
+   */
   show(req, res) {
     Origin.findById(req.params.id, {
       //Return all destinations that have a matching origin_id for the origin
@@ -30,8 +33,9 @@ module.exports= {
     });
   },
 
-
-  //Create a new origin using model.create()
+  /**
+   * Create a new origin using model.create()
+   */
   create(req, res) {
     Origin.create(req.body)
       .then(function (neworigin) {
@@ -41,8 +45,9 @@ module.exports= {
         res.status(500).json(error);
       });
   },
-
-  //Edit an existing origin details using model.update()
+  /**
+   * Edit an existing origin details using model.update()
+   */
   update(req, res) {
     Origin.update(req.body, {
       where: {
@@ -56,8 +61,9 @@ module.exports= {
       res.status(500).json(error);
     });
   },
-
-  //Delete an existing origin by the unique ID using model.destroy()
+  /**
+   * Delete an existing origin by the unique ID using model.destroy()
+   */
   delete(req, res) {
     Origin.destroy({
       where: {

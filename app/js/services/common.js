@@ -1,3 +1,8 @@
+  /**
+  * @function Common
+  * @memberOf map.service
+  * @description Common function service
+  */
 angular.module('Map.services')
   .factory('Common', ['$http', '$q', function ($http, $q) {
   	return{

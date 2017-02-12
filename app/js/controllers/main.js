@@ -1,8 +1,14 @@
+/**
+  * @class map.MainCtrl
+  * @memberOf map    
+  * @description control main control and click event to show dialog for editing data.
+  */
 angular.module('Map.controllers')
 .controller('MainCtrl', ['$rootScope', '$scope', '$mdSidenav', '$mdDialog', 'Origins', 'Destinations', 'Toast', 'Config',
 function ($rootScope, $scope, $mdSidenav, $mdDialog, Origins, Destinations, Toast, Config) {
   $rootScope.data = {};
   //Fetch all origins, and set the first as selected
+  /** */
   Origins.all()
     .then(function (origins) {
       

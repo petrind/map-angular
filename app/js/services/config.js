@@ -1,4 +1,9 @@
-angular.module('Map.services')
+  /**
+  * @function Config
+  * @memberOf map.service
+  * @description configuration of app
+  */
+  angular.module('Map.services')
   .factory('Config', ['$http', '$q', function ($http, $q) {
   	return{
       defaultLocation : function() {

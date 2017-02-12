@@ -1,3 +1,8 @@
+/**
+  * @class map.MapController
+  * @memberOf map    
+  * @description control for ngmap, and logic to communicate with Google maps API, also handle the logic for communicating with data.
+  */
 angular.module('Map.controllers')
 	.controller('MapController', ['$rootScope', '$scope', '$mdDialog', 
   'Toast', 'Origins','Destinations' , 'Common',
