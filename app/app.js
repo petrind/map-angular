@@ -12,13 +12,19 @@ var Map = angular.module('Map', [
 
 Map
   .config(['$mdThemingProvider', function ($mdThemingProvider) {
-    //Set default theme
+    //Set default theme of ngmaterial
     $mdThemingProvider.theme('default')
       .primaryPalette('blue')
       .accentPalette('red');
+    $mdThemingProvider.theme('success')
+      .primaryPalette('green')
+      .accentPalette('blue');
+    $mdThemingProvider.theme('error')
+      .primaryPalette('red')
+      .accentPalette('blue');
   }])
   .config(['$mdIconProvider', function ($mdIconProvider) {
     //Placeholder icon for origin info.
     $mdIconProvider
-      .icon('origin', './images/svg/person.svg');
+      .icon('origin', './images/svg/origin.svg');
   }]);
